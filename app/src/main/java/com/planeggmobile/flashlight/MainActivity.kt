@@ -1,6 +1,7 @@
 package com.planeggmobile.flashlight
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -49,9 +50,13 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+            else -> {
+                Log.d("MK001","logisse")
+                super.onOptionsItemSelected(item)
+            }
         }
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
