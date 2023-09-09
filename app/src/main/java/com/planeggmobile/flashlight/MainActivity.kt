@@ -15,39 +15,44 @@ import com.planeggmobile.flashlight.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    // Muutujate deklareerimine
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Määrab, et akna dekoratsioonid ei kata süsteemiaknaid
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
+        // Seob vaate XML-ga
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Seadistab tööriistariba
         setSupportActionBar(binding.toolbar)
 
+        // Navigatsioonikontrolleri loomine
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        // Seadistab nupu klõpsamise sündmuse
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAnchorView(R.id.fab)
-                .setAction("Action", null).show()
+                .setAction("tegevus", null).show()
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Paisutab menüü; see lisab elemendid tööriistaribale, kui see on olemas.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // Käsitseb tööriistariba üksuste klõpsamisi siin. Tööriistariba käsitseb automaatselt
+        // klõpsamisi Kodu/Üles nupul, nii kaua kui määrate vanemtegevuse AndroidManifest.xml-is.
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> {
@@ -57,8 +62,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onSupportNavigateUp(): Boolean {
+        // Käsitseb navigeerimise üles sündmust
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()

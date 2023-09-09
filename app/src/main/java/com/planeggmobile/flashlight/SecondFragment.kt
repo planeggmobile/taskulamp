@@ -9,14 +9,14 @@ import androidx.navigation.fragment.findNavController
 import com.planeggmobile.flashlight.databinding.FragmentSecondBinding
 
 /**
- * A simple [Fragment] subclass as the second destination in the navigation.
+ * Lihtne [Fragment] alamklass, mis on navigeerimises teine sihtkoht.
  */
 class SecondFragment : Fragment() {
 
+    // Muutuja, mis hoiab fragmenti sidumist
     private var _binding: FragmentSecondBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    // See omadus on kehtiv ainult vahemikus onCreateView ja onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,14 +24,15 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        // Initsialiseerib sidumise ja tagastab juurvaate
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Seadistab nupu klõpsamise sündmuse, et navigeerida esimesse fragmenti
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
@@ -39,6 +40,7 @@ class SecondFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        // Vabastab sidumisressursi
         _binding = null
     }
 }
